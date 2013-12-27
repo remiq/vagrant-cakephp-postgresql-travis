@@ -52,29 +52,20 @@ class php5-fpm {
     }
 }
 
-
-class mysql {
-    package { 'mysql-client':
-        ensure => present,
+class postgresql {
+    package { 'postgresql':
+        ensure => present
     }
-
-    package { 'mysql-server':
-        ensure => present,
+    exec { 'psql -f /var/db/example.sql':
+        user    =>  postgres,
+        require => Package['postgresql']
     }
-    package { 'php5-mysql':
-        ensure  =>  installed
-    }
-    #exec { 'mysql --user root -c "CREATE SCHEMA IF NOT EXISTS 'site' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci" >> /vagrant/puppet-mysql.sql.log 2>&1':
-    #    path    =>  ['/usr/bin', '/usr/sbin', '/bin'],
-    #    user    =>  postgres,
-    #    timeout => 600,
-    #    require =>  Package['mysql-server']
-    #}
-    service { 'mysql':
-        ensure  =>  running,
-        require =>  Package['mysql-server']
+    service { 'posgresql':
+        ensure => running,
+        require => Package['postgresql']
     }
 }
+
 
 stage { 'pre':
     before  =>  Stage['main']
@@ -83,4 +74,4 @@ class {
     'baseconfig':
         stage => 'pre'
 }
-include php5-fpm, mysql
+include php5-fpm, postgresql

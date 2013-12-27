@@ -17,7 +17,7 @@ class DATABASE_CONFIG {
 				'default' => 'public',
 				'test' => 'public',
 				'test2' => 'test2',
-				'test_database_three' => 'test3'
+				'testDatabaseThree' => 'test3'
 			)
 		),
 		'sqlite' => array(
@@ -26,7 +26,7 @@ class DATABASE_CONFIG {
 				'default' => ':memory:',
 				'test' => ':memory:',
 				'test2' => '/tmp/cakephp_test2.db',
-				'test_database_three' => '/tmp/cakephp_test3.db'
+				'testDatabaseThree' => '/tmp/cakephp_test3.db'
 			),
 		)
 	);

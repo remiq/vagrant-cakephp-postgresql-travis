@@ -20,6 +20,7 @@ before_script:
   cakephp_test; fi"
 - sh -c "if [ '$DB' = 'pgsql' ]; then psql -c 'CREATE SCHEMA test3;' -U postgres -d
   cakephp_test; fi"
+- mkdir ./deploy_root/app/tmp
 - chmod -R 777 ./deploy_root/app/tmp
 - sudo apt-get install lighttpd
 - sh -c "if [ '$PHPCS' = '1' ]; then pear channel-discover pear.cakephp.org; fi"

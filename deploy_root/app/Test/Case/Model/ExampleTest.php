@@ -2,13 +2,13 @@
 
 App::uses('Example', 'Model');
 
+/**
+ * Class ExampleTest
+ * @property Example $Example
+ */
 class ExampleTest extends CakeTestCase {
 
 	public $fixtures = array('app.example');
-
-/**
- * @var Example
- */
 
 	public $Example;
 

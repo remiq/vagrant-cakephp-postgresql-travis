@@ -2,7 +2,7 @@
 
 class DATABASE_CONFIG {
 
-	private $_identities = array(
+	private $__identities = array(
 		'mysql' => array(
 			'datasource' => 'Database/Mysql',
 			'host' => '0.0.0.0',
@@ -33,11 +33,11 @@ class DATABASE_CONFIG {
 
 	public $default = array(
 		'persistent' => false,
-	    'host' => '',
+		'host' => '',
 		'login' => '',
 		'password' => '',
 		'database' => 'cakephp_test',
-		'prefix'  => ''
+		'prefix' => ''
 	);
 
 	public $test = array(
@@ -49,30 +49,30 @@ class DATABASE_CONFIG {
 		'prefix' => ''
 	);
 
-	public $test2  = array(
+	public $test2 = array(
 		'persistent' => false,
 		'host' => '',
 		'login' => '',
 		'password' => '',
-		'database'  => 'cakephp_test2',
+		'database' => 'cakephp_test2',
 		'prefix' => ''
 	);
 
-	public $test_database_three = array(
-		'persistent'  => false,
+	public $testDatabaseThree = array(
+		'persistent' => false,
 		'host' => '',
 		'login' => '',
 		'password' => '',
 		'database' => 'cakephp_test3',
-	    'prefix' => ''
+		'prefix' => ''
 	);
 
 	public function __construct() {
 		$db = 'mysql';
 		if (!empty($_SERVER['DB'])) {
 			$db = $_SERVER['DB'];
-			foreach (array('default', 'test', 'test2', 'test_database_three') as $source) {
-				$config = array_merge($this->{$source}, $this->_identities[$db]);
+			foreach (array('default', 'test', 'test2', 'testDatabaseThree') as $source) {
+				$config = array_merge($this->{$source}, $this->__identities[$db]);
 				if (is_array($config['database'])) {
 					$config['database'] = $config['database'][$source];
 				}

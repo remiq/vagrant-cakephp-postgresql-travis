@@ -9,7 +9,7 @@ class Example extends AppModel {
 	public function getTruth() {
 		return true;
 	}
-	
+
 	public function getFalse() {
 		return false;
 	}

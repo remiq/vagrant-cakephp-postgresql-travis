@@ -4,7 +4,9 @@ php:
 env:
 - DB=pgsql
 before_script:
-- sh -c "psql -f ./database/example.sql -U postgres;"
+- sh -c "psql -f ./database/pre.sql -U postgres"
+- sh -c "psql -f ./database/example.sql -U postgres -d site"
+- cp deploy_root/app/Config/database-travis.php deploy_root/app/Config/database.php
 - mkdir ./deploy_root/app/tmp
 - chmod -R 777 ./deploy_root/app/tmp
 - chmod 777 ./deploy_root/lib/Cake/Console/cake
@@ -12,11 +14,13 @@ before_script:
 - sh -c "pear channel-discover pear.cakephp.org"
 - sh -c "pear install --alldeps cakephp/CakePHP_CodeSniffer;"
 - phpenv rehash
-- set +H
-- cp deploy_root/app/Config/database-travis.php deploy_root/app/Config/database.php
+
 script:
 # - sh -c "phpcs -p --extensions=php --standard=CakePHP ./deploy_root/lib/Cake; "
-- sh -c "./deploy_root/lib/Cake/Console/cake test core AllDbRelated --stderr"
+#- sh -c "./deploy_root/lib/Cake/Console/cake test core AllDbRelated --stderr"
+- sh -c "phpcs -p --extensions=php --standard=CakePHP ./deploy_root/app; "
+- sh -c "./deploy_root/lib/Cake/Console/cake test app --stderr"
+
 notifications:
   email: false
   hipchat:

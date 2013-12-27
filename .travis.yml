@@ -19,7 +19,7 @@ script:
 # - sh -c "phpcs -p --extensions=php --standard=CakePHP ./deploy_root/lib/Cake; "
 #- sh -c "./deploy_root/lib/Cake/Console/cake test core AllDbRelated --stderr"
 - sh -c "phpcs -p --extensions=php --standard=CakePHP ./deploy_root/app; "
-- sh -c "./deploy_root/lib/Cake/Console/cake test app --stderr"
+- sh -c "./deploy_root/lib/Cake/Console/cake test app -app ./deploy_root/app --stderr"
 
 notifications:
   email: false

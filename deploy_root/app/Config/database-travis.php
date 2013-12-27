@@ -1,13 +1,14 @@
 <?php
 
 class DATABASE_CONFIG {
-	private $identities = array(
+
+	private $_identities = array(
 		'mysql' => array(
 			'datasource' => 'Database/Mysql',
 			'host' => '0.0.0.0',
 			'login' => 'travis'
 		),
-		'pgsql'  => array(
+		'pgsql' => array(
 			'datasource' => 'Database/Postgres',
 			'host' => '127.0.0.1',
 			'login' => 'postgres',
@@ -29,13 +30,16 @@ class DATABASE_CONFIG {
 			),
 		)
 	);
+
 	public $default = array(
 		'persistent' => false,
 	    'host' => '',
 		'login' => '',
 		'password' => '',
 		'database' => 'cakephp_test',
-		'prefix'  => '' );
+		'prefix'  => ''
+	);
+
 	public $test = array(
 		'persistent' => false,
 		'host' => '',
@@ -44,6 +48,7 @@ class DATABASE_CONFIG {
 		'database' => 'cakephp_test',
 		'prefix' => ''
 	);
+
 	public $test2  = array(
 		'persistent' => false,
 		'host' => '',
@@ -52,6 +57,7 @@ class DATABASE_CONFIG {
 		'database'  => 'cakephp_test2',
 		'prefix' => ''
 	);
+
 	public $test_database_three = array(
 		'persistent'  => false,
 		'host' => '',
@@ -60,17 +66,18 @@ class DATABASE_CONFIG {
 		'database' => 'cakephp_test3',
 	    'prefix' => ''
 	);
+
 	public function __construct() {
 		$db = 'mysql';
 		if (!empty($_SERVER['DB'])) {
 			$db = $_SERVER['DB'];
-			foreach (array('default', 'test', 'test2', 'test_database_three')  as $source) {
-				$config = array_merge($this->{$source}, $this->identities[$db]);
+			foreach (array('default', 'test', 'test2', 'test_database_three') as $source) {
+				$config = array_merge($this->{$source}, $this->_identities[$db]);
 				if (is_array($config['database'])) {
 					$config['database'] = $config['database'][$source];
 				}
 				if (!empty($config['schema']) && is_array($config['schema'])) {
-					$config['schema']  = $config['schema'][$source];
+					$config['schema'] = $config['schema'][$source];
 				}
 				$this->{$source} = $config;
 			}

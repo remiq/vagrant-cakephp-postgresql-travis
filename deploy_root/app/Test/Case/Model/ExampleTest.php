@@ -3,10 +3,13 @@
 App::uses('Example', 'Model');
 
 class ExampleTest extends CakeTestCase {
+
 	public $fixtures = array('app.example');
-	/**
-	 * @var Example
-	 */
+
+/**
+ * @var Example
+ */
+
 	public $Example;
 
 	public function setUp() {

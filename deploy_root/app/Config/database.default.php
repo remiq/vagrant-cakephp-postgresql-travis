@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Postgres',
 		'persistent' => false,
 		'host' => '127.0.0.1',
-		'port'  =>  '5432',
+		'port' => '5432',
 		'login' => 'site',
 		'password' => 'site',
 		'database' => 'site',

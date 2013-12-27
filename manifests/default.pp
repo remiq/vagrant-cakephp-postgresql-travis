@@ -39,6 +39,9 @@ class php5-fpm {
     package {'php5-cli':
         ensure  =>  installed
     }
+    package { 'php5-pgsql':
+        ensure => present
+    }
     file { '/etc/php5/fpm/pool.d/site.conf':
         ensure  =>  present,
         source  =>  '/vagrant/manifests/php5-fpm/site.conf',
